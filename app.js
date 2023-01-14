@@ -26,7 +26,7 @@ app.get('/', async (req, res, next) => {
 
 
 
-/*mini apps routes*/
+/*sub apps routes*/
 app.use('/projects',project)
 app.use('/departements',departement)
 app.use('/events',event)
