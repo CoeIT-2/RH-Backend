@@ -6,7 +6,7 @@ const getHanlder = async (req,res)=> {
 }
 
 const getDetailHanlder = async (req, res) => {
-    const project = await getProjectDetail(req.params.name, res)
+    const project = await getProjectDetail(req.params.id, res)
     res.status(200).json({data:project})
 }
 
@@ -16,13 +16,13 @@ const postHandler=async (req,res)=> {
 }
 
 const updateHandler=async (req,res)=> {
-    const updatedProject = await updateProject(req.params.name, req.body, res)
+    const updatedProject = await updateProject(req.params.id, req.body, res)
     res.status(200).json({data:updatedProject})
 }
 
 const deleteHandler= async (req,res)=> {
-    const deletedProject = await deleteProject(req.params.name, res)
-    res.status(200).json({message:`Project "${req.params.name}" deleted successfully`,data:deletedProject})
+    const deletedProject = await deleteProject(req.params.id, res)
+    res.status(200).json({message:`Project deleted successfully`,data:deletedProject})
 }
 
 

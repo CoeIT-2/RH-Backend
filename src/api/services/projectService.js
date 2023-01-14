@@ -10,9 +10,9 @@ const getProjects = async (res) => {
     }    
 }
 
-const getProjectDetail = async (name, res) => {
+const getProjectDetail = async (id, res) => {
     try {
-        const project = await projectModel.findOne({"name":name}).exec()
+        const project = await projectModel.findById(id)
         return project
     } catch (error) {
         console.log(error)
@@ -31,9 +31,10 @@ const createProject = async (data,res) => {
       }
 }
 
-const updateProject= async (name, data, res) => { // id + request body 
+const updateProject= async (id, data, res) => { // id + request body 
     try {
-        const project= await projectModel.findOneAndUpdate({name:name}, data, {returnDocument:'after'})
+        const project= await projectModel.findByIdAndUpdate(id, data, {"new":true})
+        await project.save()
         return project
     } catch (error) {
         console.log(error)
@@ -42,9 +43,9 @@ const updateProject= async (name, data, res) => { // id + request body
     
     
 }
-const deleteProject= async (name, res) => {
+const deleteProject= async (id, res) => {
     try {
-        const project= await projectModel.findOneAndDelete({"name":name})
+        const project= await projectModel.findByIdAndDelete(id)
         return project
     } catch {
         res.status(500).json({message:error.message});

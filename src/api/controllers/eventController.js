@@ -6,7 +6,7 @@ const getHanlder = async (req,res)=> {
 }
 
 const getDetailHanlder = async (req, res) => {
-    const event = await getEventDetail(req.params.name, res)
+    const event = await getEventDetail(req.params.id, res)
     res.status(200).json({data:event})
 }
 
@@ -16,13 +16,13 @@ const postHandler=async (req,res)=> {
 }
 
 const updateHandler=async (req,res)=> {
-    const updatedEvent = await updateEvent(req.params.name, req.body, res)
+    const updatedEvent = await updateEvent(req.params.id, req.body, res)
     res.status(200).send(updatedEvent)
 }
 
 const deleteHandler= async (req,res)=> {
-    const deletedEvent = await deleteEvent(req.params.name, res)
-    res.status(200).json({message:`Event "${req.params.name}" deleted successfully`,data:deletedEvent})
+    const deletedEvent = await deleteEvent(req.params.id, res)
+    res.status(200).json({message:`Event deleted successfully`,data:deletedEvent})
 }
 
 

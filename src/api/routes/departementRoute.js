@@ -6,12 +6,12 @@ const {getHanlder,postHandler,updateHandler ,deleteHandler, getDetailHanlder}= r
 //get list
 router.get('/',getHanlder)
 //get detail
-router.get('/:name',getDetailHanlder)
+router.get('/:id',getDetailHanlder)
 //add 
 router.post('/',postHandler)
 //update 
-router.put('/:name', updateHandler)
+router.put('/:id', updateHandler)
 //delete 
-router.delete('/:name',deleteHandler)
+router.delete('/:id',deleteHandler)
 
 module.exports= router

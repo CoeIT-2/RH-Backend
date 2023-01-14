@@ -10,9 +10,9 @@ const getEvents = async (res) => {
     }    
 }
 
-const getEventDetail = async (name, res) => {
+const getEventDetail = async (id, res) => {
     try {
-        const event = await eventModel.findOne({"name":name}).exec()
+        const event = await eventModel.findById(id)
         return event
     } catch (error) {
         console.log(error)
@@ -32,9 +32,10 @@ const createEvent = async (data,res) => {
       
 }
 
-const updateEvent = async (name, data, res) => { // id + request body 
+const updateEvent = async (id, data, res) => { // id + request body 
     try {
-        const event = await eventModel.findOneAndUpdate({name:name}, data, {returnDocument:'after'})
+        const event = await eventModel.findByIdAndUpdate(id, data, {"new":true})
+        await event.save()
         return event
     } catch (error) {
         console.log(error)
@@ -43,9 +44,9 @@ const updateEvent = async (name, data, res) => { // id + request body
     
     
 }
-const deleteEvent = async (name, res) => {
+const deleteEvent = async (id, res) => {
     try {
-        const event = await eventModel.findOneAndDelete({"name":name})
+        const event = await eventModel.findByIdAndDelete(id)
         return event
     } catch {
         res.status(500).json({message:error.message});

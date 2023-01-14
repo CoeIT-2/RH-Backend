@@ -6,7 +6,7 @@ const getHanlder = async (req,res)=> {
 }
 
 const getDetailHanlder = async (req, res) => {
-    const departement = await getDepartementDetail(req.params.name, res)
+    const departement = await getDepartementDetail(req.params.id, res)
     res.status(200).json({data:departement})
 }
 
@@ -16,13 +16,13 @@ const postHandler=async (req,res)=> {
 }
 
 const updateHandler=async (req,res)=> {
-    const updatedDepartement = await updateDepartement(req.params.name, req.body, res)
+    const updatedDepartement = await updateDepartement(req.params.id, req.body, res)
     res.status(200).send(updatedDepartement)
 }
 
 const deleteHandler= async (req,res)=> {
-    const deletedDepartement = await deleteDepartement(req.params.name, res)
-    res.status(200).json({message:`departement "${req.params.name}" deleted successfully`,data:deletedDepartement})
+    const deletedDepartement = await deleteDepartement(req.params.id, res)
+    res.status(200).json({message:`departement deleted successfully`,data:deletedDepartement})
 }
 
 

@@ -10,9 +10,9 @@ const getDepartements = async (res) => {
     }    
 }
 
-const getDepartementDetail = async (name, res) => {
+const getDepartementDetail = async (id, res) => {
     try {
-        const departement = await departementModel.findOne({"name":name}).exec()
+        const departement = await departementModel.findById(id)
         return departement
     } catch (error) {
         console.log(error)
@@ -31,9 +31,10 @@ const createDepartement = async (data,res) => {
       }
 }
 
-const updateDepartement = async (name, data, res) => { // id + request body 
+const updateDepartement = async (id, data, res) => { // id + request body 
     try {
-        const departement = await departementModel.findOneAndUpdate({name:name}, data, {returnDocument:'after'})
+        const departement = await departementModel.findByIdAndUpdate(id, data, {"new":true})
+        await departement.save()
         return departement
     } catch (error) {
         console.log(error)
@@ -42,9 +43,9 @@ const updateDepartement = async (name, data, res) => { // id + request body
     
     
 }
-const deleteDepartement = async (name, res) => {
+const deleteDepartement = async (id, res) => {
     try {
-        const departement = await departementModel.findOneAndDelete({"name":name})
+        const departement = await departementModel.findByIdAndDelete(id)
         return departement
     } catch {
         res.status(500).json({message:error.message});
