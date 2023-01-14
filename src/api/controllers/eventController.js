@@ -1,13 +1,31 @@
+const {getEvents, createEvent, updateEvent, deleteEvent, getEventDetail} = require('../services/eventService.js')
+
+const getHanlder = async (req,res)=> {
+    const events= await getEvents(res)
+    res.status(200).json({data:events})
+}
+
+const getDetailHanlder = async (req, res) => {
+    const event = await getEventDetail(req.params.name, res)
+    res.status(200).json({data:event})
+}
+
+const postHandler=async (req,res)=> {
+    const newEvent = await createEvent(req.body, res)
+    res.status(200).json({message:`Event ${req.body.name} created successfully`,data:newEvent})
+}
+
+const updateHandler=async (req,res)=> {
+    const updatedEvent = await updateEvent(req.params.name, req.body, res)
+    res.status(200).send(updatedEvent)
+}
+
+const deleteHandler= async (req,res)=> {
+    const deletedEvent = await deleteEvent(req.params.name, res)
+    res.status(200).json({message:`Event "${req.params.name}" deleted successfully`,data:deletedEvent})
+}
 
 
-const getHanlder = async (req,res)=> {res.send('GET events')}
 
-const getDetailHanlder = async (req, res) => {res.send('GET event detail')}
-
-const postHandler=async (req,res)=>(req,res)=> {res.send('POST event')}
-
-const deleteHandler=async (req,res)=>(req,res)=> {res.send('DELETE event')}
-
-const updateHandler=async (req,res)=> {res.send('PUT event')}
 
 module.exports={getHanlder, getDetailHanlder, postHandler,deleteHandler,updateHandler}

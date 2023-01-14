@@ -7,12 +7,12 @@ const {getHanlder, getDetailHanlder, postHandler,updateHandler ,deleteHandler}= 
 //get list
 router.get('/',getHanlder)
 //get detail
-router.get('/:id',getDetailHanlder)
+router.get('/:name',getDetailHanlder)
 //add 
 router.post('/',postHandler)
 //update 
-router.put('/:id', updateHandler)
+router.put('/:name', updateHandler)
 //delete 
-router.delete('/:id',deleteHandler)
+router.delete('/:name',deleteHandler)
 
 module.exports= router

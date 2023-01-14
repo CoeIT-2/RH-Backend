@@ -1,15 +1,16 @@
-import { Schema, SchemaTypes, model } from "mongoose";
+const mongoose = require('mongoose');
 
-const departementSchema= Schema({
+const departementSchema= mongoose.Schema({
     name: {
         type: String,
-        required:[true,'please specify the name for the departement']
+        unique:true,
+        required:[true,'please specify the name of the departement']
     },
     description: {
         type: String,
     },
-    members:{type:[SchemaTypes.ObjectId],ref:'Member'},
-    projects:{type:[SchemaTypes.ObjectId],ref:'Project'}
+    members:{type:[mongoose.SchemaTypes.ObjectId],ref:'Member'},
+    projects:{type:[mongoose.SchemaTypes.ObjectId],ref:'Project'}
 })
 
-export default model('Departement',departementSchema)
+module.exports = mongoose.model('Departement',departementSchema)

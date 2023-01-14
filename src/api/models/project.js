@@ -1,8 +1,9 @@
-import { Schema, model } from "mongoose";
+const mongoose = require('mongoose');
 
-const projectSchema= Schema({
+const projectSchema= mongoose.Schema({
     name: {
         type: String,
+        unique:true,
         required:[true,'please specify the name of the project']
     },
     description: {
@@ -16,8 +17,8 @@ const projectSchema= Schema({
             values: ['On going','On hold','Closed'],
             message: "{VALUE} is not a valid project's status, possible values : On going, On hold, Closed"}
     },
-    deadline: Date,
+    deadline: {type: Date},
     
 })
 
-export default model('Project',projectSchema)
+module.exports = mongoose.model('Project',projectSchema)

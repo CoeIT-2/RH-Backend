@@ -28,8 +28,8 @@ app.get('/', async (req, res, next) => {
 
 /*mini apps routes*/
 app.use('/projects',project)
-app.use('/departement',departement)
-app.use('/event',event)
+app.use('/departements',departement)
+app.use('/events',event)
 
 
 app.use((req, res, next) => {

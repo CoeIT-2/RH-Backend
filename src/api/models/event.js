@@ -1,8 +1,9 @@
-import { Schema, SchemaTypes, model } from "mongoose";
+const mongoose = require('mongoose');
 
-const eventSchema= Schema({
+const eventSchema= mongoose.Schema({
     name: {
         type: String,
+        unique:true,
         required:[true,'please specify the name of the event']
     },
     description:  String,
@@ -10,8 +11,28 @@ const eventSchema= Schema({
         type: Date,
         required:[true,'please specify the launch date of the event']
     },
-    organizers:{type:[SchemaTypes.ObjectId],ref:'Member'},
-    projects:{type:[SchemaTypes.ObjectId],ref:'Project'}
+    organizers:{type:[mongoose.SchemaTypes.ObjectId],ref:'Member'},
+    projects:{type:[mongoose.SchemaTypes.ObjectId],ref:'Project'}
 })
 
-export default model('Event',eventSchema)
+module.exports = mongoose.model('Event',eventSchema)        //required:[true,'please specify the launch date of the event']
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
