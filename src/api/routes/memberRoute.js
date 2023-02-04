@@ -1,12 +1,12 @@
 const router= require('express').Router();
 const {getHanlder,postHandler,updateHandler ,deleteHandler}= require('../controllers/memberController')
-//get all products
+//get all members
 router.get('/',getHanlder)
-//add product
+//add member
 router.post('/',postHandler)
-//update product by id
+//update member by id
 router.put('/:id', updateHandler)
-//delete product by id
+//delete member by id
 router.delete('/:id',deleteHandler)
 
 module.exports= router

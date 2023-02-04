@@ -1,12 +1,12 @@
 const router= require('express').Router();
 const {getHanlder,postHandler,updateHandler ,deleteHandler}= require('../controllers/notificationController')
-//get all products
+//get all notifications
 router.get('/',getHanlder)
-//add product
+//add notification
 router.post('/',postHandler)
-//update product by id
+//update notification by id
 router.put('/:id', updateHandler)
-//delete product by id
+//delete notification by id
 router.delete('/:id',deleteHandler)
 
 module.exports= router
