@@ -7,6 +7,9 @@ const config = require("../../config/auth.config.js");
 const createUser = async (req,res) => {
     const user = new User({
         username: req.body.username,
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        phone: req.body.phone =! null ? req.body.phone : null,
         email: req.body.email,
         password: bcrypt.hashSync(req.body.password, 8),
         roles: req.body.roles
