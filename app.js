@@ -7,6 +7,7 @@ require('dotenv').config();
 const connectDB = require('./src/config/db_init.js')
 
 /*routes import*/
+const auth= require('./src/api/routes/authRoute.js');
 const departement= require('./src/api/routes/departementRoute.js');
 const event= require('./src/api/routes/eventRoute.js');
 const project= require('./src/api/routes/projectRoute.js');
@@ -27,6 +28,7 @@ app.get('/', async (req, res, next) => {
 
 
 /*sub apps routes*/
+app.use('/auth', auth)
 app.use('/projects',project)
 app.use('/departements',departement)
 app.use('/events',event)
