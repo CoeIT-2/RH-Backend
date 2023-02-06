@@ -13,6 +13,7 @@ const getDetailHanlder = async (req, res) => {
 
 const postHandler=async (req,res)=> {
     const newMember = await createMember(req.body, res)
+    console.log(req.body);
     res.status(200).json({message:`member ${req.body.name} created successfully`,data:newMember})
 }
 

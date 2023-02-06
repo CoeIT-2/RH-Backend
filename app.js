@@ -21,6 +21,15 @@ app.get('/', async (req, res, next) => {
 });
 
 
+//call routes
+app.use('/member', member)
+app.use('/badge', badge)
+app.use('/task', task)
+app.use('/notification', notification)
+
+
+
+
 app.use((req, res, next) => {
   next(createError.NotFound());
 });
@@ -33,14 +42,6 @@ app.use((err, req, res, next) => {
   });
 });
 
-
-
-
-//call routes
-app.use('/members', member)
-app.use('/badge', badge)
-app.use('/task', task)
-app.use('/notification', notification)
 
 
 

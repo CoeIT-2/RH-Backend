@@ -1,16 +1,16 @@
 const mongoose= require('mongoose');
 
-const Schema = mongoose.Schema();
+const Schema = mongoose.Schema;
 
 
-const memberSchema= Schema({
+const memberSchema= new Schema({
 
     name: String,
     lastName: String,
     email: String,
     password: String,
     phone: {
-        code: int,
+        code: mongoose.SchemaTypes.Decimal128,
         number: String,
     },
     role: String,

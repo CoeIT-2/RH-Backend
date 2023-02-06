@@ -1,13 +1,15 @@
 const mongoose= require('mongoose');
 
-const Schema = mongoose.Schema();
+const Schema = mongoose.Schema;
 
 const Member = require('./member')
 
 
-const bageSchema= Schema({
+const bageSchema= new Schema({
 
-    name: String,
+    name: {type: String, 
+        required:[true,'name is required']
+    },
     decription: String,
     members: [{type: mongoose.SchemaTypes.ObjectId, ref: 'Member' }],
 

@@ -13,7 +13,7 @@ const getDetailHanlder = async (req, res) => {
 
 const postHandler=async (req,res)=> {
     const newTask = await createTask(req.body, res)
-    res.status(200).json({message:`task ${req.body.name} created successfully`,data:newTask})
+    res.status(200).json({message:`task ${req.body.title} created successfully`,data:newTask})
 }
 
 const updateHandler=async (req,res)=> {

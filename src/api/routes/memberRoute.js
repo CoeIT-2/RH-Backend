@@ -1,5 +1,7 @@
 const router= require('express').Router();
-const {getHanlder,postHandler,updateHandler ,deleteHandler}= require('../controllers/memberController')
+const {getHanlder, getDetailHanlder ,postHandler,updateHandler ,deleteHandler}= require('../controllers/memberController')
+//get member
+router.get('/:id',getDetailHanlder)
 //get all members
 router.get('/',getHanlder)
 //add member

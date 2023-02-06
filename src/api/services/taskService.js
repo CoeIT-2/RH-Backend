@@ -1,4 +1,5 @@
 const taskModel = require('../models/task.js') 
+const memberModel = require('../models/member.js') 
 
 const getTasks = async (res) => {   
     try {
@@ -34,6 +35,26 @@ const createTask = async (data,res) => {
 const updateTask = async (id, data, res) => { // id + request body 
     try {
         const task = await taskModel.findByIdAndUpdate(id, data, {"new":true})
+        if (task.state != null && task.state == "Done"){
+            const members = task.members
+
+            
+            var addPoints;
+            if (task.difficulty == "Easy"){
+                addPoints = 10;
+            } else if (task.difficulty == "Normal") {
+                addPoints = 30;
+            } else {
+                addPoints = 50;
+            }
+            
+            for (let i=0; i < members.length; i++) {
+                
+                let member = await memberModel.findById(members[i])
+                member.points = member.points + addPoints;
+                member.save();
+            }
+        }
         await task.save()
         return task
     } catch (error) {
