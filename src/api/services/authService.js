@@ -12,7 +12,8 @@ const createUser = async (req,res) => {
         phone: req.body.phone =! null ? req.body.phone : null,
         email: req.body.email,
         password: bcrypt.hashSync(req.body.password, 8),
-        roles: req.body.roles
+        roles: req.body.roles, 
+        departement: req.body.departement
       });
       
     try {

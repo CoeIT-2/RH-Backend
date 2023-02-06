@@ -38,10 +38,15 @@ const Member = mongoose.model(
     roles: {
         type: [String],
         required:[true,'roles field is required'],
+        default:["Member"],
         enum:{
             values: ["Member","Manager","Co-Manager","Lead","Co-Lead"],
             message: "{VALUE} is not a valid role, possible values : Member, Manager, Co-Manager, Lead, Co-Lead"}
     },
+    departement: {
+      type:mongoose.SchemaTypes.ObjectId,
+      ref:'Departement', 
+      required:[true,'department field is required']}
   })
 );
 

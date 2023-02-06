@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const departementSchema= mongoose.Schema({
+const departmentSchema= mongoose.Schema({
     name: {
         type: String,
         unique:true,
@@ -13,4 +13,4 @@ const departementSchema= mongoose.Schema({
     projects:{type:[mongoose.SchemaTypes.ObjectId],ref:'Project'}
 })
 
-module.exports = mongoose.model('Departement',departementSchema)
+module.exports = mongoose.model('Department',departmentSchema)
