@@ -1,31 +1,52 @@
-const mongoose= require('mongoose');
+const mongoose = require("mongoose");
 
-const Schema = mongoose.Schema;
-
-
-const memberSchema= new Schema({
-
-    name: String,
-    lastName: String,
-    email: String,
-    password: String,
+const Member = mongoose.model(
+  "Member",
+  new mongoose.Schema({
+    username: {
+      type: String,
+      required:[true,'please provide a username for the user']},
+    email: {
+      type: String,
+      required:[true,'email field is required']},
+    password: {
+      type: String,
+      required:[true,'password field is required']},
+    firstName: {
+      type: String,
+      required:[true,'first name field is required']},
+    lastName: {
+      type: String,
+      required:[true,'last name field is required']},
     phone: {
         code: mongoose.SchemaTypes.Decimal128,
         number: String,
     },
-    role: String,
     lastOnline: Date,
     tier: {
         type: String,
         enum: ['Golden', 'Silver', 'Bronze'],
+        default: 'Bronze'
     },
-    points: mongoose.SchemaTypes.Decimal128,
+    points: {type: mongoose.SchemaTypes.Decimal128, default: 0},
     dateJoined: {
         type: Date,
         default : Date.now,
     },
+    roles: {
+        type: [String],
+        required:[true,'roles field is required'],
+        default:["Member"],
+        enum:{
+            values: ["Member","Co-Manager","Lead"],
+            message: "{VALUE} is not a valid role, possible values : Member, Co-Manager, Lead"}
+    },
+    departement: {
+      type:mongoose.SchemaTypes.ObjectId,
+      ref:'Departement', 
+      required:[true,'department field is required']}
+  })
+);
 
-    
-})
+module.exports = Member;
 
-module.exports= mongoose.model('Member',memberSchema)

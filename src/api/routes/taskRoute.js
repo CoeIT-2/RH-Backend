@@ -1,14 +1,21 @@
 const router= require('express').Router();
-const {getHanlder,getDetailHanlder,postHandler,updateHandler ,deleteHandler}= require('../controllers/taskController')
-//get task
-router.get('/:id',getDetailHanlder)
-//get all tasks
-router.get('/',getHanlder)
-//add task
-router.post('/',postHandler)
-//update task by id
-router.put('/:id', updateHandler)
-//delete task by id
-router.delete('/:id',deleteHandler)
+\
+const {getHanlder, getDetailHanlder, postHandler,updateHandler ,deleteHandler}= require('../controllers/departementController')
+const {verifyToken} = require("../middlewares/authJwt.js")
+const {checkIfHR}= require('../middlewares/authorization.js')
+
+
+
+
+//get list
+router.get('/',[verifyToken], getHanlder)
+//get detail
+router.get('/:id',[verifyToken], getDetailHanlder)
+//add 
+router.post('/',[verifyToken, checkIfHR], postHandler)
+//update 
+router.put('/:id', [verifyToken, checkIfHR], updateHandler)
+//delete 
+router.delete('/:id',[verifyToken, checkIfHR], deleteHandler)\
 
 module.exports= router

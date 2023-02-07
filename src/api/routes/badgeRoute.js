@@ -1,14 +1,17 @@
 const router= require('express').Router();
-const {getHanlder,getDetailHanlder,postHandler,updateHandler ,deleteHandler}= require('../controllers/badgeController')
-//get dadge
-router.get('/:id',getDetailHanlder)
-//get all dadges
+const {getHanlder, getDetailHanlder, postHandler,updateHandler ,deleteHandler}= require('../controllers/projectController')
+
+
+
+//get list
 router.get('/',getHanlder)
-//add dadge
+//get detail
+router.get('/:id',getDetailHanlder)
+//add 
 router.post('/',postHandler)
-//update dadge by id
+//update 
 router.put('/:id', updateHandler)
-//delete dadge by id
+//delete 
 router.delete('/:id',deleteHandler)
 
 module.exports= router
