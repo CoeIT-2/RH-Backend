@@ -1,7 +1,7 @@
 const router= require('express').Router();
 const {getHanlder,getDetailHanlder,postHandler,updateHandler ,deleteHandler}= require('../controllers/taskController')
 //get task
-router.get('/',getDetailHanlder)
+router.get('/:id',getDetailHanlder)
 //get all tasks
 router.get('/',getHanlder)
 //add task

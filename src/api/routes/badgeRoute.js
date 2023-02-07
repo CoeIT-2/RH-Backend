@@ -1,5 +1,7 @@
 const router= require('express').Router();
-const {getHanlder,postHandler,updateHandler ,deleteHandler}= require('../controllers/badgeController')
+const {getHanlder,getDetailHanlder,postHandler,updateHandler ,deleteHandler}= require('../controllers/badgeController')
+//get dadge
+router.get('/:id',getDetailHanlder)
 //get all dadges
 router.get('/',getHanlder)
 //add dadge

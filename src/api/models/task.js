@@ -18,6 +18,8 @@ const taskSchema= new Schema({
         enum: ["Easy", "Normal", "Hard"],
         required:[true,'difficulty is required']
     },
+
+
     state:{
         type: String,
         enum: ["Done", "On Going", "On Hold"],
@@ -25,7 +27,7 @@ const taskSchema= new Schema({
     },
     members: [mongoose.SchemaTypes.ObjectId],
     project:{
-        type:  String,
+        type:  mongoose.SchemaTypes.ObjectId,
         required:[true,'project is required']
     }
 

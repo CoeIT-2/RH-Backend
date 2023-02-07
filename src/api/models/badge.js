@@ -11,7 +11,7 @@ const bageSchema= new Schema({
         required:[true,'name is required']
     },
     decription: String,
-    members: [{type: mongoose.SchemaTypes.ObjectId, ref: 'Member' }],
+    members: [{type: mongoose.SchemaTypes.ObjectId, ref: Member }],
 
 
     

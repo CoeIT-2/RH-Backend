@@ -1,5 +1,7 @@
 const router= require('express').Router();
-const {getHanlder,postHandler,updateHandler ,deleteHandler}= require('../controllers/notificationController')
+const {getHanlder,getDetailHanlder,postHandler,updateHandler ,deleteHandler}= require('../controllers/notificationController')
+//get notification
+router.get('/:id',getDetailHanlder)
 //get all notifications
 router.get('/',getHanlder)
 //add notification
