@@ -1,4 +1,6 @@
 const User = require('../models/member.js') 
+const Departement = require('../models/departement.js') 
+
 var bcrypt = require("bcryptjs");
 var jwt = require("jsonwebtoken");
 const config = require("../../config/auth.config.js");
@@ -18,6 +20,9 @@ const createUser = async (req,res) => {
       
     try {
         await user.save();
+        const departement = await Departement.findById(user.departement)
+        departement.members.push(user._id)
+        departement.save()
         return user
       } catch (error) {
         console.log(error)

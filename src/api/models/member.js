@@ -1,5 +1,3 @@
-
-/*temporary model, will use Member later*/
 const mongoose = require("mongoose");
 
 const Member = mongoose.model(
@@ -40,8 +38,8 @@ const Member = mongoose.model(
         required:[true,'roles field is required'],
         default:["Member"],
         enum:{
-            values: ["Member","Manager","Co-Manager","Lead","Co-Lead"],
-            message: "{VALUE} is not a valid role, possible values : Member, Manager, Co-Manager, Lead, Co-Lead"}
+            values: ["Member","Co-Manager","Lead"],
+            message: "{VALUE} is not a valid role, possible values : Member, Co-Manager, Lead"}
     },
     departement: {
       type:mongoose.SchemaTypes.ObjectId,

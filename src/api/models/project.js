@@ -18,6 +18,7 @@ const projectSchema= mongoose.Schema({
             message: "{VALUE} is not a valid project's status, possible values : On going, On hold, Closed"}
     },
     deadline: {type: Date},
+    participants:{type:[mongoose.SchemaTypes.ObjectId],ref:'Member'},
     
 })
 
