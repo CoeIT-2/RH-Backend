@@ -6,6 +6,7 @@ const Member = mongoose.model(
     username: {
       type: String,
       required:[true,'please provide a username for the user']},
+    discord_id: {type: String},
     email: {
       type: String,
       required:[true,'email field is required']},
@@ -19,8 +20,8 @@ const Member = mongoose.model(
       type: String,
       required:[true,'last name field is required']},
     phone: {
-        code: mongoose.SchemaTypes.Decimal128,
-        number: String,
+        number: mongoose.SchemaTypes.Decimal128,
+        code: String, //example: +213 (country code)
     },
     lastOnline: Date,
     tier: {
@@ -44,7 +45,9 @@ const Member = mongoose.model(
     departement: {
       type:mongoose.SchemaTypes.ObjectId,
       ref:'Departement', 
-      required:[true,'department field is required']}
+      required:[true,'department field is required']},
+    
+    
   })
 );
 

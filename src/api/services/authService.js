@@ -9,6 +9,7 @@ const config = require("../../config/auth.config.js");
 const createUser = async (req,res) => {
     const user = new User({
         username: req.body.username,
+        discord_id: req.body.discord_id =! null ? req.body.discord_id : null,
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         phone: req.body.phone =! null ? req.body.phone : null,
