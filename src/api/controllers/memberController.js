@@ -1,4 +1,4 @@
-const {getMembers, createMember, updateMember, deleteMember, getMemberDetail} = require('../services/memberService')
+const {getMembers, updateMember, deleteMember, getMemberDetail} = require('../services/memberService')
 
 
 const getHanlder = async (req,res)=> {
@@ -11,11 +11,6 @@ const getDetailHanlder = async (req, res) => {
     res.status(200).json({data:member})
 }
 
-const postHandler=async (req,res)=> {
-    const newMember = await createMember(req.body, res)
-    console.log(req.body);
-    res.status(200).json({message:`member ${req.body.name} created successfully`,data:newMember})
-}
 
 const updateHandler=async (req,res)=> {
     const updatedMember = await updateMember(req.params.id, req.body, res)
@@ -30,4 +25,4 @@ const deleteHandler= async (req,res)=> {
 
 
 
-module.exports={getHanlder, getDetailHanlder, postHandler,deleteHandler,updateHandler}
+module.exports={getHanlder, getDetailHanlder, deleteHandler,updateHandler}

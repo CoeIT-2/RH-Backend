@@ -20,16 +20,6 @@ const getMemberDetail = async (id, res) => {
     }    
 }
 
-const createMember = async (data,res) => {
-    const newMember = new  memberModel(data) //data=req.body
-    try {
-        await newMember.save();
-        return newMember
-      } catch (error) {
-        console.log(error)
-        res.status(500).json({message:error.message});
-      }
-}
 
 const updateMember = async (id, data, res) => { // id + request body 
     try {
@@ -53,4 +43,4 @@ const deleteMember = async (id, res) => {
     
 }
 
-module.exports = {getMembers, createMember, updateMember, deleteMember, getMemberDetail}
+module.exports = {getMembers, updateMember, deleteMember, getMemberDetail}

@@ -1,7 +1,7 @@
 const router= require('express').Router();
 const {getHanlder, getDetailHanlder, postHandler,updateHandler ,deleteHandler}= require('../controllers/departementController')
 const {verifyToken} = require("../middlewares/authJwt.js")
-const {checkIfHR}= require('../middlewares/authorization.js')
+const {checkIfHR, checkIfSuperuser}= require('../middlewares/authorization.js')
 
 
 
@@ -11,10 +11,10 @@ router.get('/',[verifyToken], getHanlder)
 //get detail
 router.get('/:id',[verifyToken], getDetailHanlder)
 //add 
-router.post('/',[verifyToken, checkIfHR], postHandler)
+router.post('/',[verifyToken, checkIfSuperuser], postHandler)
 //update 
-router.put('/:id', [verifyToken, checkIfHR], updateHandler)
+router.put('/:id', [verifyToken, checkIfSuperuser], updateHandler)
 //delete 
-router.delete('/:id',[verifyToken, checkIfHR], deleteHandler)
+router.delete('/:id',[verifyToken, checkIfSuperuser], deleteHandler)
 
 module.exports= router

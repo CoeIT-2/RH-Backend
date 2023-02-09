@@ -25,9 +25,10 @@ const taskSchema= new Schema({
         enum: ["Done", "On Going", "On Hold"],
         default : "On Going"
     },
-    members: [mongoose.SchemaTypes.ObjectId],
+    members: {type:[mongoose.SchemaTypes.ObjectId],ref:'Member'},
     project:{
         type:  mongoose.SchemaTypes.ObjectId,
+        ref: 'Project',
         required:[true,'project is required']
     }
 

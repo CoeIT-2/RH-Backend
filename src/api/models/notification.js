@@ -20,7 +20,7 @@ const notificationSchema= new Schema({
         type: Date,
         default: Date.now,
     },
-    members: [{type: mongoose.SchemaTypes.ObjectId, ref: Member}],
+    members: {type: [mongoose.SchemaTypes.ObjectId], ref: 'Member'},
 
 
     
