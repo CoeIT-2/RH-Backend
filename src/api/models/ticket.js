@@ -1,5 +1,4 @@
 const mongoose= require('mongoose');
-const Member = require('./member')
 
 const Schema = mongoose.Schema;
 
@@ -8,6 +7,7 @@ const ticketSchema= new Schema({
 
     member: {
         type:  mongoose.SchemaTypes.ObjectId,
+        ref: 'Member',
         required:[true,'member is required']
     },
     discordIssue: {
